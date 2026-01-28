@@ -4,11 +4,11 @@ import { ArrowLeftRight } from 'lucide-react';
 export function Trading() {
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-white mb-4">Trading Interface</h2>
-      <div className="bg-[#141824] rounded-xl p-8 border border-[#1e2433] shadow-lg flex flex-col items-center justify-center min-h-[400px]">
+      <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Trading Interface</h2>
+      <div className="bg-white dark:bg-[#141824] rounded-xl p-8 border border-slate-200 dark:border-[#1e2433] shadow-lg flex flex-col items-center justify-center min-h-[400px] transition-colors duration-300">
         <ArrowLeftRight className="w-16 h-16 text-[#0033ad] mb-4" />
-        <h3 className="text-xl font-semibold text-white mb-2">DEX Aggregator</h3>
-        <p className="text-slate-400 text-center max-w-md">
+        <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">DEX Aggregator</h3>
+        <p className="text-slate-600 dark:text-slate-400 text-center max-w-md">
           Connect your wallet to swap tokens across the best liquidity pools on Cardano.
         </p>
         <button className="mt-6 px-6 py-2 bg-[#0033ad] hover:bg-[#0044cc] text-white rounded-lg font-medium transition-colors">

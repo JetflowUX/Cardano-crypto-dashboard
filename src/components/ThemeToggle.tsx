@@ -1,4 +1,3 @@
-import React from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
 export function ThemeToggle() {
@@ -6,7 +5,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="relative flex items-center justify-center p-2 rounded-lg transition-all duration-300 hover:bg-white/10 text-slate-400 hover:text-white"
+      className="relative flex items-center justify-center p-2 rounded-lg transition-all duration-300 hover:bg-slate-100 dark:hover:bg-white/10 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
       aria-label="Toggle theme">
 
       <div className="relative w-6 h-6">

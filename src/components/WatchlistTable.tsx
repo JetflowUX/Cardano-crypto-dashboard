@@ -147,10 +147,10 @@ const assets: Asset[] = [
 
 export function WatchlistTable() {
   return (
-    <div className="w-full overflow-x-auto rounded-xl border border-[#1e2433] bg-[#0a0e1a]">
+    <div className="w-full overflow-x-auto rounded-xl border border-slate-200 dark:border-[#1e2433] bg-white dark:bg-[#0a0e1a] transition-colors duration-300">
       <table className="w-full text-left border-collapse">
         <thead>
-          <tr className="bg-[#141824] text-xs font-medium text-slate-500 border-b border-[#1e2433]">
+          <tr className="bg-slate-100 dark:bg-[#141824] text-xs font-medium text-slate-600 dark:text-slate-500 border-b border-slate-200 dark:border-[#1e2433]">
             <th className="px-6 py-4 w-16 text-center">#</th>
             <th className="px-6 py-4">Cryptocurrency</th>
             <th className="px-6 py-4 text-right">Price</th>
@@ -159,11 +159,11 @@ export function WatchlistTable() {
             <th className="px-6 py-4 w-16"></th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-[#1e2433]">
+        <tbody className="divide-y divide-slate-200 dark:divide-[#1e2433]">
           {assets.map((asset) =>
           <tr
             key={asset.id}
-            className={`group transition-all duration-200 hover:bg-[#141824] hover:shadow-lg ${asset.ticker === 'ADA' ? 'bg-[#0033ad]/5' : ''}`}>
+            className={`group transition-all duration-200 hover:bg-slate-100 dark:hover:bg-[#141824] hover:shadow-lg ${asset.ticker === 'ADA' ? 'bg-[#0033ad]/5 dark:bg-[#0033ad]/5' : ''}`}>
 
               <td className="px-6 py-4">
                 <div className="flex items-center justify-center gap-2">
@@ -190,7 +190,7 @@ export function WatchlistTable() {
                     </div>
                   )}
                   <div className="flex flex-col">
-                    <span className="text-sm font-bold text-white group-hover:text-[#0033ad] transition-colors">
+                    <span className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-[#0033ad] transition-colors">
                       {asset.name}
                     </span>
                     <span className="text-xs text-slate-500">
@@ -200,35 +200,29 @@ export function WatchlistTable() {
                 </div>
               </td>
               <td className="px-6 py-4 text-right">
-                <span className="font-mono text-sm font-medium text-slate-200">
+                <span className="text-sm font-medium text-slate-900 dark:text-slate-300">
                   {asset.price}
                 </span>
               </td>
               <td className="px-6 py-4 text-right">
-                <div
-                className={`inline-flex items-center gap-1 text-sm font-medium ${asset.change >= 0 ? 'text-[#10b981]' : 'text-[#ef4444]'}`}>
-
-                  {asset.change >= 0 ?
-                <ArrowUp className="w-3 h-3" /> :
-
-                <ArrowDown className="w-3 h-3" />
-                }
+                <div className={`inline-flex items-center gap-1 text-sm font-medium ${asset.change >= 0 ? 'text-[#10b981]' : 'text-[#ef4444]'}`}>
+                  {asset.change >= 0 ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />}
                   {Math.abs(asset.change)}%
                 </div>
               </td>
               <td className="px-6 py-4 text-right">
-                <span className="text-sm text-slate-400">
+                <span className="text-sm font-medium text-slate-900 dark:text-slate-300">
                   {asset.marketCap}
                 </span>
               </td>
               <td className="px-6 py-4 text-right">
                 <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                   <button className="px-3 py-1.5 text-xs font-medium text-white bg-[#0033ad] hover:bg-[#0044cc] rounded-lg transition-colors">
-                     Trade
-                   </button>
-                   <button className="px-3 py-1.5 text-xs font-medium text-[#0033ad] bg-[#0033ad]/10 hover:bg-[#0033ad]/20 rounded-lg transition-colors">
-                     Stake
-                   </button>
+                  <button className="px-3 py-1.5 text-xs font-medium text-white bg-[#0033ad] hover:bg-[#0044cc] rounded-lg transition-colors shadow-sm">
+                    Trade
+                  </button>
+                  <button className="px-3 py-1.5 text-xs font-medium text-[#0033ad] dark:text-[#3b82f6] bg-[#0033ad]/10 dark:bg-[#3b82f6]/10 hover:bg-[#0033ad]/20 dark:hover:bg-[#3b82f6]/20 rounded-lg transition-colors">
+                    Stake
+                  </button>
                 </div>
               </td>
             </tr>
@@ -236,5 +230,4 @@ export function WatchlistTable() {
         </tbody>
       </table>
     </div>);
-
 }

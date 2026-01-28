@@ -42,7 +42,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0e1a] text-slate-300 font-sans selection:bg-[#0033ad] selection:text-white">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0a0e1a] text-slate-900 dark:text-slate-300 font-sans selection:bg-[#0033ad] selection:text-white transition-colors duration-300">
       <Sidebar activeTab={activeTab} onNavigate={setActiveTab} />
       <TopNav />
 

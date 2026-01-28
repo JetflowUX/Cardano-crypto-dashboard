@@ -2,6 +2,7 @@ import React from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { ArrowUpRight, ArrowDownRight, MoreHorizontal, Wallet, CreditCard, Bitcoin, DollarSign, TrendingUp, Activity, Wifi } from 'lucide-react';
 import { WatchlistTable } from '../components/WatchlistTable';
+import { useTheme } from '../hooks/useTheme';
 
 // Mock Data for Chart
 const data = [
@@ -24,6 +25,16 @@ const transactions = [
 ];
 
 export function Dashboard() {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+  const gridStroke = isDark ? '#1e2433' : '#e2e8f0';
+  const tickColor = isDark ? '#64748b' : '#475569';
+  const tooltipContentStyle = {
+    backgroundColor: isDark ? '#141824' : '#ffffff',
+    border: `1px solid ${isDark ? '#1e2433' : '#e2e8f0'}`,
+    borderRadius: 8
+  } as React.CSSProperties;
+  const tooltipItemStyle = { color: isDark ? '#ffffff' : '#0f172a' } as React.CSSProperties;
   return (
     <div className="space-y-8">
       {/* Grid Layout */}
@@ -35,55 +46,55 @@ export function Dashboard() {
           {/* Top Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Card 1: Total Balance */}
-            <div className="bg-[#141824] p-6 rounded-2xl border border-[#1e2433] relative overflow-hidden group hover:border-[#0033ad]/50 transition-all">
+            <div className="bg-white dark:bg-[#141824] p-6 rounded-2xl border border-slate-200 dark:border-[#1e2433] relative overflow-hidden group hover:border-[#0033ad]/50 transition-all">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-10 h-10 rounded-lg bg-[#10b981]/10 flex items-center justify-center">
                   <Wallet className="w-5 h-5 text-[#10b981]" />
                 </div>
-                <span className="text-slate-400 text-sm font-medium">Total Balance</span>
+                <span className="text-slate-600 dark:text-slate-400 text-sm font-medium">Total Balance</span>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">$176,026.3</h3>
-              <div className="h-1 w-full bg-[#1e2433] rounded-full overflow-hidden">
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">$176,026.3</h3>
+              <div className="h-1 w-full bg-slate-200 dark:bg-[#1e2433] rounded-full overflow-hidden">
                 <div className="h-full bg-[#10b981] w-[70%]" />
               </div>
             </div>
 
             {/* Card 2: Trading Account */}
-            <div className="bg-[#141824] p-6 rounded-2xl border border-[#1e2433] relative overflow-hidden group hover:border-[#3b82f6]/50 transition-all">
+            <div className="bg-white dark:bg-[#141824] p-6 rounded-2xl border border-slate-200 dark:border-[#1e2433] relative overflow-hidden group hover:border-[#3b82f6]/50 transition-all">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-10 h-10 rounded-lg bg-[#3b82f6]/10 flex items-center justify-center">
                   <TrendingUp className="w-5 h-5 text-[#3b82f6]" />
                 </div>
-                <span className="text-slate-400 text-sm font-medium">Trading Account</span>
+                <span className="text-slate-600 dark:text-slate-400 text-sm font-medium">Trading Account</span>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">$100,002.9</h3>
-              <div className="h-1 w-full bg-[#1e2433] rounded-full overflow-hidden">
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">$100,002.9</h3>
+              <div className="h-1 w-full bg-slate-200 dark:bg-[#1e2433] rounded-full overflow-hidden">
                 <div className="h-full bg-[#3b82f6] w-[50%]" />
               </div>
             </div>
 
             {/* Card 3: Margin Account */}
-            <div className="bg-[#141824] p-6 rounded-2xl border border-[#1e2433] relative overflow-hidden group hover:border-[#f59e0b]/50 transition-all">
+            <div className="bg-white dark:bg-[#141824] p-6 rounded-2xl border border-slate-200 dark:border-[#1e2433] relative overflow-hidden group hover:border-[#f59e0b]/50 transition-all">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-10 h-10 rounded-lg bg-[#f59e0b]/10 flex items-center justify-center">
                   <Activity className="w-5 h-5 text-[#f59e0b]" />
                 </div>
-                <span className="text-slate-400 text-sm font-medium">Margin Account</span>
+                <span className="text-slate-600 dark:text-slate-400 text-sm font-medium">Margin Account</span>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">$12,052.7</h3>
-              <div className="h-1 w-full bg-[#1e2433] rounded-full overflow-hidden">
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">$12,052.7</h3>
+              <div className="h-1 w-full bg-slate-200 dark:bg-[#1e2433] rounded-full overflow-hidden">
                 <div className="h-full bg-[#f59e0b] w-[30%]" />
               </div>
             </div>
           </div>
 
           {/* Trade Statistics Chart */}
-          <div className="bg-[#141824] p-6 rounded-2xl border border-[#1e2433]">
+          <div className="bg-white dark:bg-[#141824] p-6 rounded-2xl border border-slate-200 dark:border-[#1e2433]">
             <div className="flex items-center justify-between mb-8">
-              <h3 className="text-lg font-bold text-white">Trade Statistics</h3>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white">Trade Statistics</h3>
               <div className="flex gap-2">
                 {['1H', '1D', '1W', '1M', '1Y'].map((period) => (
-                  <button key={period} className={`px-3 py-1 text-xs rounded-lg ${period === '1W' ? 'bg-[#0033ad] text-white' : 'text-slate-400 hover:bg-[#1e2433]'}`}>
+                  <button key={period} className={`px-3 py-1 text-xs rounded-lg ${period === '1W' ? 'bg-[#0033ad] text-white' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1e2433]'}`}>
                     {period}
                   </button>
                 ))}
@@ -98,12 +109,12 @@ export function Dashboard() {
                       <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1e2433" vertical={false} />
-                  <XAxis dataKey="name" stroke="#64748b" tick={{fill: '#64748b', fontSize: 12}} axisLine={false} tickLine={false} />
-                  <YAxis stroke="#64748b" tick={{fill: '#64748b', fontSize: 12}} axisLine={false} tickLine={false} tickFormatter={(value) => `$${value}`} />
+                  <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} vertical={false} />
+                  <XAxis dataKey="name" stroke={tickColor} tick={{fill: tickColor, fontSize: 12}} axisLine={false} tickLine={false} />
+                  <YAxis stroke={tickColor} tick={{fill: tickColor, fontSize: 12}} axisLine={false} tickLine={false} tickFormatter={(value) => `$${value}`} />
                   <Tooltip 
-                    contentStyle={{ backgroundColor: '#141824', border: '1px solid #1e2433', borderRadius: '8px' }}
-                    itemStyle={{ color: '#fff' }}
+                    contentStyle={tooltipContentStyle}
+                    itemStyle={tooltipItemStyle}
                   />
                   <Area type="monotone" dataKey="uv" stroke="#10b981" strokeWidth={3} fillOpacity={1} fill="url(#colorUv)" />
                 </AreaChart>
@@ -114,7 +125,7 @@ export function Dashboard() {
           {/* Watchlist Section */}
           <div className="space-y-4">
             <div className="flex items-center justify-between px-1">
-              <h3 className="text-lg font-bold text-white">Watchlist</h3>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white">Watchlist</h3>
               <button className="text-sm text-[#0033ad] font-medium hover:text-[#0044cc]">View All</button>
             </div>
             <WatchlistTable />
@@ -169,8 +180,8 @@ export function Dashboard() {
           </div>
 
           {/* Last Transactions */}
-          <div className="bg-[#141824] p-6 rounded-2xl border border-[#1e2433]">
-            <h3 className="text-lg font-bold text-white mb-6">Last Transaction</h3>
+          <div className="bg-white dark:bg-[#141824] p-6 rounded-2xl border border-slate-200 dark:border-[#1e2433]">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-6">Last Transaction</h3>
             <div className="space-y-6">
               {transactions.map((tx) => (
                 <div key={tx.id} className="flex items-center justify-between group cursor-pointer">
@@ -179,20 +190,20 @@ export function Dashboard() {
                       <tx.icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-white font-medium text-sm">{tx.name}</h4>
-                      <p className="text-xs text-slate-500">{tx.type}</p>
+                      <h4 className="text-slate-900 dark:text-white font-medium text-sm">{tx.name}</h4>
+                      <p className="text-xs text-slate-600 dark:text-slate-500">{tx.type}</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className={`text-sm font-bold ${tx.amount.startsWith('+') ? 'text-[#10b981]' : 'text-white'}`}>
+                    <p className={`text-sm font-bold ${tx.amount.startsWith('+') ? 'text-[#10b981]' : 'text-slate-900 dark:text-white'}`}>
                       {tx.amount}
                     </p>
-                    <p className="text-xs text-slate-500">{tx.date}</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-500">{tx.date}</p>
                   </div>
                 </div>
               ))}
             </div>
-            <button className="w-full mt-6 py-3 rounded-xl border border-[#1e2433] text-sm font-medium text-slate-400 hover:text-white hover:bg-[#1e2433] transition-colors">
+            <button className="w-full mt-6 py-3 rounded-xl border border-slate-200 dark:border-[#1e2433] text-sm font-medium text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#1e2433] transition-colors">
               View All Transactions
             </button>
           </div>
